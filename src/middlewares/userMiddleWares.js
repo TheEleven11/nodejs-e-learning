@@ -20,15 +20,17 @@ export const cleanUpdatedUserObject = cleanObject(
   'email',
   'name',
   'phone',
+  'gender',
   'role',
   'password',
   'confirmPassword'
 );
 
-export const cleanCreatedNewUserObject = cleanObject(
+export const cleanCreatedUserObject = cleanObject(
   'email',
   'name',
   'phone',
+  'gender',
   'role',
   'password',
   'confirmPassword'

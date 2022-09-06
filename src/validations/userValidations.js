@@ -14,7 +14,7 @@ import {
   checkOptionalRoleForAdmin,
 } from './userValidationFactory.js';
 
-export const validateCreatingNewUser = () => [
+export const validateCreatingUser = () => [
   checkEmail(),
   checkName(),
   checkPhone(),
