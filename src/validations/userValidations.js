@@ -1,31 +1,35 @@
-import { check } from 'express-validator';
-
 import {
+  checkPhone,
+  checkEmail,
+  checkName,
+  checkGender,
+  checkPassword,
+  checkRoleForAdmin,
   checkConfirmPassword,
   checkOptionalEmail,
   checkOptionalName,
   checkOptionalPhone,
+  checkOptionalGender,
+  checkOptionalPassword,
+  checkOptionalRoleForAdmin,
 } from './userValidationFactory.js';
-import { validateSigningUp } from './authValidations.js';
 
-const checkRole = () =>
-  check('role')
-    .optional()
-    .custom((value) => ['customer', 'admin'].includes(value))
-    .withMessage('Role is invalid.');
-
-export const validateCreatingNewUser = () => [validateSigningUp(), checkRole()];
+export const validateCreatingNewUser = () => [
+  checkEmail(),
+  checkName(),
+  checkPhone(),
+  checkGender(),
+  checkRoleForAdmin(),
+  checkPassword(),
+  checkConfirmPassword(),
+];
 
 export const validateUpdatingUser = () => [
   checkOptionalEmail(),
   checkOptionalName(),
   checkOptionalPhone(),
-  checkRole(),
-
-  check('password')
-    .optional()
-    .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 chars long.'),
-
+  checkOptionalGender(),
+  checkOptionalRoleForAdmin(),
+  checkOptionalPassword(),
   checkConfirmPassword(),
 ];

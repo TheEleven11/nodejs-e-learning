@@ -19,16 +19,21 @@ const userSchema = new mongoose.Schema(
       unique: true,
     },
     avatar: String,
+    gender: {
+      type: String,
+      enum: ['male', 'female', 'other'],
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['student', 'teacher', 'admin'],
+      required: true,
+    },
     password: {
       type: String,
       required: true,
       minLength: 6,
       select: false,
-    },
-    role: {
-      type: String,
-      enum: ['student', 'teacher', 'admin'],
-      default: 'student',
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
