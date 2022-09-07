@@ -16,15 +16,7 @@ const validateHandler = (req, res, next) => {
     }
   });
 
-  return next(
-    new AppError(
-      `Error from validator: ${JSON.stringify(extractedError).replace(
-        /"/g,
-        ''
-      )}`,
-      400
-    )
-  );
+  return next(new AppError('Error from validator.', 400, extractedError));
 };
 
 export default function validate(validation) {
