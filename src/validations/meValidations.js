@@ -1,6 +1,5 @@
 import {
   checkConfirmPassword,
-  checkOptionalEmail,
   checkOptionalName,
   checkOptionalPhone,
   checkCurrentPassword,
@@ -15,7 +14,6 @@ export const validateChangingPassword = () => [
 ];
 
 export const validateUpdatingInfo = () => [
-  checkOptionalEmail(),
   checkOptionalName(),
   checkOptionalPhone(),
   checkOptionalGender(),

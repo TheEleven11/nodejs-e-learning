@@ -15,14 +15,12 @@ const userSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: true,
       unique: true,
     },
     avatar: String,
     gender: {
       type: String,
       enum: ['male', 'female', 'other'],
-      required: true,
     },
     role: {
       type: String,

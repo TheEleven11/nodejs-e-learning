@@ -3,16 +3,12 @@ import {
   checkPassword,
   checkConfirmPassword,
   checkEmail,
-  checkPhone,
-  checkGender,
   checkRole,
 } from './userValidationFactory.js';
 
 export const validateSigningUp = () => [
   checkEmail(),
   checkName(),
-  checkPhone(),
-  checkGender(),
   checkRole(),
   checkPassword(),
   checkConfirmPassword(),

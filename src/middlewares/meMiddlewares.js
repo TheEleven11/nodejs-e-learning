@@ -6,17 +6,3 @@ export const getCurrentId = (req, res, next) => {
 };
 
 export const cleanUpdatedInfoObject = cleanObject('name', 'phone', 'gender');
-
-export const validateUpdatingUser = () => [
-  checkOptionalEmail(),
-  checkOptionalName(),
-  checkOptionalPhone(),
-  checkRole(),
-
-  check('password')
-    .optional()
-    .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 chars long.'),
-
-  checkConfirmPassword(),
-];

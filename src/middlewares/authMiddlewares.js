@@ -56,8 +56,6 @@ export const restrictTo = (...roles) => {
 export const cleanSignedUpObject = cleanObject(
   'email',
   'name',
-  'phone',
-  'gender',
   'role',
   'password',
   'confirmPassword'

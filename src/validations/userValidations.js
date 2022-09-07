@@ -1,8 +1,6 @@
 import {
-  checkPhone,
   checkEmail,
   checkName,
-  checkGender,
   checkPassword,
   checkRoleForAdmin,
   checkConfirmPassword,
@@ -17,8 +15,6 @@ import {
 export const validateCreatingUser = () => [
   checkEmail(),
   checkName(),
-  checkPhone(),
-  checkGender(),
   checkRoleForAdmin(),
   checkPassword(),
   checkConfirmPassword(),

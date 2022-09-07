@@ -17,23 +17,6 @@ export const checkName = () =>
     .isLength({ min: 8 })
     .withMessage('Name must be at least 8 chars long.');
 
-export const checkPhone = () =>
-  check('phone')
-    .exists()
-    .withMessage('Phone is required.')
-    .bail()
-    .isMobilePhone('vi-VN')
-    .withMessage('Phone number is invalid.')
-    .bail();
-
-export const checkGender = () =>
-  check('gender')
-    .exists()
-    .withMessage('Gender is required.')
-    .bail()
-    .custom((value) => ['male', 'female', 'other'].includes(value))
-    .withMessage('Gender is invalid.');
-
 export const checkRole = () =>
   check('role')
     .exists()
