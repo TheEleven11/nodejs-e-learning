@@ -23,25 +23,26 @@ const router = express.Router();
 
 router.use(protect, restrictTo('admin'));
 
-router.get('/', getAllUsers);
+router.get('/users', getAllUsers);
 
 router.post(
-  '/',
+  '/users',
   cleanCreatedUserObject,
   validate(validateCreatingUser),
   createUser
 );
 
-router.get('/:id', getUser);
+router.get('/users/:id', getUser);
 
 router.patch(
-  '/:id',
+  '/users/:id',
+  checkCurrentAdmin,
   cleanUpdatedUserObject,
   validate(validateUpdatingUser),
   handleUploadImage('avatar', 'users'),
   updateUser
 );
 
-router.delete('/:id', checkCurrentAdmin, deleteUser);
+router.delete('/users/:id', checkCurrentAdmin, deleteUser);
 
 export default router;
