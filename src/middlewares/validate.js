@@ -16,9 +16,13 @@ const validateHandler = (req, res, next) => {
     }
   });
 
-  return next(new AppError('Error from validator.', 400, extractedError));
+  return next(
+    new AppError('Error from validator.', 400, {
+      validationError: extractedError,
+    })
+  );
 };
 
-export default function validate(validation) {
-  return [validation(), validateHandler];
-}
+const validate = (validation) => [validation(), validateHandler];
+
+export default validate;

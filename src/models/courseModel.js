@@ -23,7 +23,7 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
     memberLimit: {
-      type: Date,
+      type: Number,
       required: true,
     },
   },
