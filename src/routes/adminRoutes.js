@@ -13,11 +13,11 @@ import {
   checkCurrentAdmin,
   cleanCreatedUserObject,
   cleanUpdatedUserObject,
-} from '../middlewares/userMiddleWares.js';
+} from '../middlewares/adminMiddleWares.js';
 import {
   validateCreatingUser,
   validateUpdatingUser,
-} from '../validations/userValidations.js';
+} from '../validations/adminValidations.js';
 
 const router = express.Router();
 
