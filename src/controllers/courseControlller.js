@@ -9,7 +9,10 @@ import Course from '../models/courseModel.js';
 
 export const getAllCourses = getAll(Course);
 
-export const getCourse = getOne(Course);
+export const getCourse = getOne(Course, {
+  path: 'teacher',
+  select: 'name email',
+});
 
 export const createCourse = createOne(Course);
 
