@@ -7,13 +7,17 @@ export const checkString = (field, minLength) =>
     .withMessage(`${lodash.startCase(field)} is required.`)
     .bail()
     .isLength({ min: minLength })
-    .withMessage(`${lodash.startCase(field)} must be at least 8 chars long.`);
+    .withMessage(
+      `${lodash.startCase(field)} must be at least ${minLength} chars long.`
+    );
 
 export const checkOptionalString = (field, minLength) =>
   check(field)
     .optional()
     .isLength({ min: minLength })
-    .withMessage(`${lodash.startCase(field)} must be at least 8 chars long.`);
+    .withMessage(
+      `${lodash.startCase(field)} must be at least ${minLength} chars long.`
+    );
 
 export const checkDate = (field) =>
   check(field)
