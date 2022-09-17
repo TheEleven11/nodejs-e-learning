@@ -9,8 +9,9 @@ import {
 import { protect, restrictTo } from '../middlewares/authMiddlewares.js';
 import {
   cleanCourseObject,
-  getTeacherId,
-  checkTeacherOwnThisCourse,
+  getTeacherIdForCourse,
+  checkTeacherOwnCourse,
+  deleteRelatedTopics,
 } from '../middlewares/courseMiddlewares.js';
 import validate from '../middlewares/validate.js';
 import {
@@ -30,18 +31,19 @@ router.post(
   '/',
   cleanCourseObject,
   validate(validateCreatingCourse),
-  getTeacherId,
+  getTeacherIdForCourse,
   createCourse
 );
 
+router.use(checkTeacherOwnCourse);
+
 router.patch(
   '/:id',
-  checkTeacherOwnThisCourse,
   cleanCourseObject,
   validate(validateUpdatingCourse),
   updateCourse
 );
 
-router.delete('/:id', checkTeacherOwnThisCourse, deleteCourse);
+router.delete('/:id', deleteRelatedTopics, deleteCourse);
 
 export default router;

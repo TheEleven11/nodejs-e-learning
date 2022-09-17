@@ -1,5 +1,6 @@
 node_modules
 public
+jsonTemplates
 
 .env
 package-lock.json

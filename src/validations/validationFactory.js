@@ -48,19 +48,33 @@ export const checkOptionalEnum = (field, array) =>
     .custom((value) => array.includes(value))
     .withMessage(`${lodash.startCase(field)} is invalid.`);
 
-export const checkId = (field) =>
+export const checkId = (field, Model) =>
   check(field)
     .exists()
     .withMessage(`${lodash.startCase(field)} Id is required.`)
     .bail()
     .isMongoId()
-    .withMessage(`${lodash.startCase(field)} Id is invalid.`);
+    .withMessage(`${lodash.startCase(field)} Id is invalid.`)
+    .bail()
+    .custom((value) =>
+      Model.findById(value).then((doc) =>
+        doc ? Promise.resolve() : Promise.reject()
+      )
+    )
+    .withMessage(`No ${lodash.startCase(field)} found with this ID`);
 
 export const checkOptionalId = (field) =>
   check(field)
     .optional()
     .isMongoId()
-    .withMessage(`${lodash.startCase(field)} Id is invalid.`);
+    .withMessage(`${lodash.startCase(field)} Id is invalid.`)
+    .bail()
+    .custom((value) =>
+      Model.findById(value).then((doc) =>
+        doc ? Promise.resolve() : Promise.reject()
+      )
+    )
+    .withMessage(`No ${lodash.startCase(field)} found with this ID`);
 
 export const checkInt = (field) =>
   check(field)
@@ -75,3 +89,17 @@ export const checkOptionalInt = (field) =>
     .optional()
     .isInt({ min: 0 })
     .withMessage(`${lodash.startCase(field)} must be a integer.`);
+
+export const checkURL = (field) =>
+  check(field)
+    .exists()
+    .withMessage(`${lodash.startCase(field)} is required.`)
+    .bail()
+    .isURL()
+    .withMessage(`${lodash.startCase(field)} is invalid.`);
+
+export const checkOptionalURL = (field) =>
+  check(field)
+    .optional()
+    .isURL()
+    .withMessage(`${lodash.startCase(field)} is invalid.`);

@@ -13,6 +13,7 @@ const courseSchema = new mongoose.Schema(
     teacher: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
+      required: true,
     },
     startDate: {
       type: Date,
@@ -27,8 +28,14 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { toJSON: { virtuals: true }, toObject: { virtuals: true }, timestamps: true }
 );
+
+courseSchema.virtual('topics', {
+  ref: 'Topic',
+  localField: '_id',
+  foreignField: 'course',
+});
 
 const Course = mongoose.model('Course', courseSchema);
 
