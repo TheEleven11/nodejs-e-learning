@@ -31,7 +31,6 @@ topicSchema.virtual('lessons', {
 });
 
 topicSchema.pre(/^find/, function (next) {
-  console.log('abc');
   this.populate({ path: 'lessons', select: 'title index url -topic' });
   next();
 });

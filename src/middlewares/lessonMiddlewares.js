@@ -2,7 +2,7 @@ import cleanObject from '../utils/cleanObject.js';
 import catchAsync from '../utils/catchAsync.js';
 import Topic from '../models/topicModel.js';
 import Lesson from '../models/LessonModel.js';
-import { checkOwnedTeacher } from './middlewareFactory.js';
+import { checkOwnedUser } from './middlewareFactory.js';
 
 export const getTeacherIdForLesson = catchAsync(async (req, res, next) => {
   const topic = await Topic.findById(req.body.topic);
@@ -10,7 +10,7 @@ export const getTeacherIdForLesson = catchAsync(async (req, res, next) => {
   return next();
 });
 
-export const checkTeacherOwnLesson = checkOwnedTeacher(Lesson);
+export const checkTeacherOwnLesson = checkOwnedUser(Lesson, 'teacher');
 
 export const cleanCreatedLessonObject = cleanObject(
   'title',

@@ -45,6 +45,7 @@ export const checkEnum = (field, array) =>
 
 export const checkOptionalEnum = (field, array) =>
   check(field)
+    .optional()
     .custom((value) => array.includes(value))
     .withMessage(`${lodash.startCase(field)} is invalid.`);
 

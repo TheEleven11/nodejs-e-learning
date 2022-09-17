@@ -37,6 +37,12 @@ courseSchema.virtual('topics', {
   foreignField: 'course',
 });
 
+courseSchema.virtual('members', {
+  ref: 'Result',
+  localField: '_id',
+  foreignField: 'course',
+});
+
 const Course = mongoose.model('Course', courseSchema);
 
 export default Course;
