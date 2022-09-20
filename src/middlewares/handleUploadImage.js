@@ -21,7 +21,7 @@ export const checkFile = (req, res, next) => {
 const getUploadMulter = (imgField, dirName) => {
   const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-      callback(null, `public/imgs/${dirName}/`);
+      callback(null, `public/images/${dirName}/`);
     },
     filename: (req, file, callback) => {
       if (!whitelist.includes(file.mimetype)) {

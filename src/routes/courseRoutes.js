@@ -9,7 +9,7 @@ import {
 import { protect, restrictTo } from '../middlewares/authMiddlewares.js';
 import {
   cleanCourseObject,
-  getTeacherIdForCourse,
+  getTeacherId,
   checkTeacherOwnCourse,
   deleteRelatedTopics,
 } from '../middlewares/courseMiddlewares.js';
@@ -31,7 +31,7 @@ router.post(
   '/',
   cleanCourseObject,
   validate(validateCreatingCourse),
-  getTeacherIdForCourse,
+  getTeacherId,
   createCourse
 );
 

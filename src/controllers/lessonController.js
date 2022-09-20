@@ -5,7 +5,7 @@ import {
   createOne,
   getOne,
 } from './handlerFactory.js';
-import Lesson from '../models/LessonModel.js';
+import Lesson from '../models/lessonModel.js';
 
 export const getAllLessons = getAll(Lesson);
 

@@ -5,8 +5,11 @@ import {
   validateChangingPassword,
   validateUpdatingInfo,
 } from '../validations/meValidations.js';
-import { changePassword } from '../controllers/meController.js';
-import { getUser, updateUser } from '../controllers/userController.js';
+import {
+  getUser,
+  updateUser,
+  changePassword,
+} from '../controllers/userController.js';
 import {
   cleanUpdatedInfoObject,
   getCurrentId,

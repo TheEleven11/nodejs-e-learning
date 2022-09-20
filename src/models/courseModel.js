@@ -43,6 +43,16 @@ courseSchema.virtual('members', {
   foreignField: 'course',
 });
 
+courseSchema.virtual('discussions', {
+  ref: 'Discussion',
+  localField: '_id',
+  foreignField: 'course',
+});
+
+courseSchema.post(/^find/, function (doc) {
+  if (doc?.members) doc.members = doc.members.map((member) => member.student);
+});
+
 const Course = mongoose.model('Course', courseSchema);
 
 export default Course;

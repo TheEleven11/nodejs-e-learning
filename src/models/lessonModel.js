@@ -25,7 +25,7 @@ const lessonSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true }, timestamps: true }
+  { timestamps: true }
 );
 
 const Lesson = mongoose.model('Lesson', lessonSchema);

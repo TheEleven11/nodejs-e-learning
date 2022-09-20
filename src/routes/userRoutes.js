@@ -21,21 +21,21 @@ import {
 
 const router = express.Router();
 
+router.get('/', getAllUsers);
+
+router.get('/:id', getUser);
+
 router.use(protect, restrictTo('admin'));
 
-router.get('/users', getAllUsers);
-
 router.post(
-  '/users',
+  '/',
   cleanCreatedUserObject,
   validate(validateCreatingUser),
   createUser
 );
 
-router.get('/users/:id', getUser);
-
 router.patch(
-  '/users/:id',
+  '/:id',
   checkCurrentAdmin,
   cleanUpdatedUserObject,
   validate(validateUpdatingUser),
@@ -43,6 +43,6 @@ router.patch(
   updateUser
 );
 
-router.delete('/users/:id', checkCurrentAdmin, deleteUser);
+router.delete('/:id', checkCurrentAdmin, deleteUser);
 
 export default router;

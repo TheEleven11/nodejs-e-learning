@@ -3,7 +3,7 @@ import { checkOwnedUser, deleteRelatedDocuments } from './middlewareFactory.js';
 import Course from '../models/courseModel.js';
 import Topic from '../models/topicModel.js';
 
-export const getTeacherIdForCourse = (req, res, next) => {
+export const getTeacherId = (req, res, next) => {
   req.body.teacher = req.user.id;
   return next();
 };

@@ -64,7 +64,7 @@ export const checkId = (field, Model) =>
     )
     .withMessage(`No ${lodash.startCase(field)} found with this ID`);
 
-export const checkOptionalId = (field) =>
+export const checkOptionalId = (field, Model) =>
   check(field)
     .optional()
     .isMongoId()

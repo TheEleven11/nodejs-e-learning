@@ -2,7 +2,7 @@ import cleanObject from '../utils/cleanObject.js';
 import catchAsync from '../utils/catchAsync.js';
 import Course from '../models/courseModel.js';
 import Topic from '../models/topicModel.js';
-import Lesson from '../models/LessonModel.js';
+import Lesson from '../models/lessonModel.js';
 import { checkOwnedUser, deleteRelatedDocuments } from './middlewareFactory.js';
 
 export const getTeacherIdForTopic = catchAsync(async (req, res, next) => {

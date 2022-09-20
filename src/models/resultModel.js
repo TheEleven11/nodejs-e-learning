@@ -17,7 +17,7 @@ const resultSchema = new mongoose.Schema(
 );
 
 resultSchema.pre(/^find/, function (next) {
-  this.populate({ path: 'student', select: 'name email -_id' });
+  this.populate({ path: 'student', select: 'name email' });
   this.populate({ path: 'course', select: '' });
   next();
 });
