@@ -7,6 +7,8 @@ import {
 } from './handlerFactory.js';
 import User from '../models/userModel.js';
 import catchAsync from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
+import createSendToken from '../utils/createSendToken.js';
 
 export const getAllUsers = getAll(User);
 
